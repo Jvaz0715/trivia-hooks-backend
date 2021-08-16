@@ -99,7 +99,7 @@ async function login(req, res) {
 async function updatePlayerStats(req, res) {
    try {
       let updatedUser = await User.findOneAndUpdate(
-         {email: req.body.email}, 
+         { email: req.body.email }, 
          req.body,
          {new: true },
       )
@@ -117,6 +117,7 @@ async function updatePlayerStats(req, res) {
 }
 
 //TODO: create the logout function that will work by deleting the jwt-cookie
+
 
 module.exports = {
    getAllUsers,

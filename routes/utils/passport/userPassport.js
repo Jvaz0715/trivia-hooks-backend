@@ -11,11 +11,11 @@ jwtOpts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOpts.secretOrKey = keys;
 
 const userJWTLoginStrategy = new JwtStrategy(jwtOpts, async(payload, done) => {
-   const userEmail = payload.userEmail;
-
+   const email = payload.email;
+   console.log(payload)
    try{
-      if (userEmail) {
-         const user = await User.findOne({email: userEmail}).select("-password");
+      if (email) {
+         const user = await User.findOne({email: email}).select("-password");
 
          if(!user) {
             return done(null, false);
