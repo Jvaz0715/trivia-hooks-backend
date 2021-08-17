@@ -5,7 +5,8 @@ var {
    getAllUsers,
    createUser,
    login,
-   updatePlayerStats
+   updatePlayerStats,
+   getUserByID
 } = require("./controller/userController");
 
 router.get("/", function(req, res, next) {
@@ -14,9 +15,9 @@ router.get("/", function(req, res, next) {
 
 router.get("/get-all-users", getAllUsers)
 
+
 router.post("/create-user", createUser);
 router.post("/login", login);
-
 
 router.put(
    "/update-player-stats",
@@ -25,6 +26,11 @@ router.put(
    }),
    updatePlayerStats
 );
+
+router.get(
+   "/get-user/:id",
+   getUserByID
+)
 
 //put router.get for logout
 router.get("/logout", function (req, res) {

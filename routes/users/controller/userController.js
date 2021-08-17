@@ -18,6 +18,17 @@ async function getAllUsers(req, res) {
    }
 };
 
+async function getUserByID(req, res) {
+   try {
+      let foundUser = await User.findOne({_id: req.params.id});
+      res.json({foundUser})
+   } catch(e) {
+      res.status(500).json({
+         message: dbErrorHelper(e),
+      })
+   }
+}
+
 //successfully creates a new user
 async function createUser(req, res) {
    try {
@@ -69,6 +80,7 @@ async function login(req, res) {
          {
             username: foundUser.username,
             email: foundUser.email,
+            id: foundUser._id,
          },
          process.env.JWT_USER_SECRET_KEY
       );
@@ -116,12 +128,11 @@ async function updatePlayerStats(req, res) {
    }
 }
 
-//TODO: create the logout function that will work by deleting the jwt-cookie
-
 
 module.exports = {
    getAllUsers,
    createUser,
    login,
    updatePlayerStats,
+   getUserByID
 }
