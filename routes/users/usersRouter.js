@@ -20,7 +20,7 @@ router.post("/create-user", createUser);
 router.post("/login", login);
 
 router.put(
-   "/update-player-stats",
+   "/update-player-stats/:id",
    passport.authenticate("jwt-user", {
       session: false
    }),

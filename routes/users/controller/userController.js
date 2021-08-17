@@ -110,8 +110,8 @@ async function login(req, res) {
 //successfully updates player stats, TODO: make private with jwt
 async function updatePlayerStats(req, res) {
    try {
-      let updatedUser = await User.findOneAndUpdate(
-         { email: req.body.email }, 
+      let updatedUser = await User.findByIdAndUpdate(
+         { _id: req.params.id }, 
          req.body,
          {new: true },
       )
