@@ -18,12 +18,12 @@ router.get("/get-all-users", getAllUsers)
 
 router.post("/create-user", createUser);
 router.post("/login", login);
-
+// TODO: ask Pak how to include this on frontend
 router.put(
    "/update-player-stats/:id",
-   passport.authenticate("jwt-user", {
-      session: false
-   }),
+   // passport.authenticate("jwt-user", {
+   //    session: false
+   // }),
    updatePlayerStats
 );
 
